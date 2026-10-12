@@ -1,0 +1,8 @@
+[project]
+name = "my-agent"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["guava-sdk", "technician-assistant", "typing_extensions"]
+
+[tool.uv.sources]
+technician-assistant = { path = "..", editable = true }
