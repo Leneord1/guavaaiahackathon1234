@@ -260,6 +260,18 @@ uv sync --extra dev --extra webrtc
 Without WebEngine, WebRTC opens externally.
 Default browser handles microphone access.
 
+### Troubleshooting `uv`
+
+If PowerShell cannot find `uv` after installation,
+refresh the current terminal's `PATH`:
+
+```powershell
+$env:Path = [Environment]::GetEnvironmentVariable("Path", "User") + ";" + [Environment]::GetEnvironmentVariable("Path", "Machine")
+uv --version
+```
+
+Restarting PowerShell also refreshes `PATH`.
+
 ## Running Desktop Application
 
 ```powershell
