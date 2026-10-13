@@ -2,11 +2,12 @@
 
 from pathlib import Path
 
-from guava.commands import SetTaskCommand
+from guava.commands import SendInstructionCommand, SetTaskCommand
 from guava.testing import MockCall
 
 from technician_assistant.agent import create_agent
 from technician_assistant.interview import INTERVIEW_FIELDS
+from technician_assistant.profile import ProfileService
 from technician_assistant.storage import Storage
 
 
@@ -49,3 +50,20 @@ def test_registered_interview_route_saves_report(tmp_path: Path) -> None:
     reports = storage.list_reports()
     assert len(reports) == 1
     assert reports[0].mode == "research_interview"
+
+
+def test_call_start_injects_runtime_profile_field(tmp_path: Path) -> None:
+    """Inject current runtime field into call context."""
+    storage = Storage(tmp_path / "assistant.db")
+    ProfileService(storage).save("Bay", "number", "4")
+    agent = create_agent(storage, FakeKnowledge())  # type: ignore[arg-type]
+    call = MockCall("call-profile")
+
+    assert agent._on_call_start is not None
+    agent._on_call_start(call)
+
+    injection = call._command_queue[0]
+    assert isinstance(injection, SendInstructionCommand)
+    assert '"field_name": "Bay"' in injection.instruction
+    assert '"field_type": "number"' in injection.instruction
+    assert '"field_value": "4"' in injection.instruction
