@@ -332,6 +332,21 @@ The worker serves both channels.
 Only import authorized documents.
 Supported formats are PDF and text.
 
+Add manuals through the desktop interface:
+
+1. Start the desktop application.
+2. Select **Manuals** in the sidebar.
+3. Select **Add PDF or text manual**.
+4. Choose one or more `.pdf` or `.txt` files.
+5. Select **Open** to import them.
+6. Confirm filenames appear in the manual list.
+7. Open **Voice Assistant**.
+8. Select **Restart** to rebuild the Guava index.
+
+To delete a manual, select its filename.
+Then select **Remove selected**.
+Restart Guava after every manual change.
+
 The application extracts document text.
 Each filename becomes stable source.
 Guava indexes extracted manual content.
