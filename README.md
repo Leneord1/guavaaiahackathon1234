@@ -262,6 +262,8 @@ Default browser handles microphone access.
 
 ### Troubleshooting `uv`
 
+See [User Troubleshooting Guide](TROUBLESHOOTING.md) for complete recovery steps.
+
 If PowerShell cannot find `uv` after installation,
 refresh the current terminal's `PATH`:
 
@@ -273,6 +275,16 @@ uv --version
 Restarting PowerShell also refreshes `PATH`.
 
 ## Running Desktop Application
+
+Double-click:
+
+```text
+run.cmd
+```
+
+The launcher creates the environment when needed.
+
+Alternatively, run from PowerShell:
 
 ```powershell
 uv run python .\app.py
