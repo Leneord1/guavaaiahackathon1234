@@ -3,6 +3,13 @@
 Windows-first automotive voice assistant.
 Built for Guava AI hackathon.
 
+
+## Future Planning
+
+* Change AI models
+* Add capability to allow service technicians from other fields to utilize software
+* Create a secure Vector database that will exist within a company's internal server.
+
 ## Team
 
 **Team:** Sunny Side Up  
